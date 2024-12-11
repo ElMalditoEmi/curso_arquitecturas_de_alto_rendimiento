@@ -43,6 +43,11 @@ __asm volatile(
 "       BSEL.V  $w6, $w4, $w2       \n" // Si a[i] = b[i] copio desde w4, si no desde el d[i] original
 "       st.D    $w6, 0($9)          \n" // Store updated d[i]
 
+// En este punto w3, sigue teniendo el valor actualizado de a[i]
+"       FSUB.D  $w0, $w3, $w8         \n" // b[i] =  a - 5
+"       st.D    $w0, 0($7)          \n" // Store updated d[i]
+
+
 
 "       SUB     $4, $4, $5          \n" // Decrementar con los restantes usados
 "       DADD    $6, $6, $5          \n" // Mover las direcciones base
